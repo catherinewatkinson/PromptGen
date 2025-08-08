@@ -42,7 +42,7 @@ Here is the user's raw context to analyze:
 1.  Analyze the user's context to infer the most likely role they need the agent to take (e.g., "Python Developer," "Code Reviewer," "Computational Chemist").
 2.  Analyze the context to create a concise but comprehensive task description.
 3.  Format the final output *exactly* as follows, replacing the bracketed placeholders with the role and task description you inferred.
-4.  A **critical requirement** is that you do not replicate any code that you were provided as context, instead providing a placeholder where you wish for it to be included.
+4.  A **critical requirement** is that you do not replicate any code that you were provided as context, instead providing a placeholder where you wish for it to be included. Please preceed any three backticks plus text types and corresponding closing three backticks with four spaces, e.g.:   ```python [ENTER YOUR CODE HERE```
 
 **Role:** 
 [INSERT INFERRED ROLE HERE]

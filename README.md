@@ -82,9 +82,9 @@ cat my_code.py | prompt-gen
 
 **Method 3: Pasting long text directly into the terminal using a "here document"** 
 
-This mode is instigated by typing << followed by some delimiter, e.g. EOF and then enter, pasting your text, typing the delimiter (here EOF) again and hitting enter once more.
+This mode is instigated by typing << followed by some delimiter in inverted commas, e.g. 'EOF' and then enter, pasting your text, typing the delimiter (here EOF) again and hitting enter once more.
 ```bash
-prompt-gen <<EOF
+prompt-gen <<'EOF'
 > Paste your multi-line
 > code or text directly
 > into the terminal.
@@ -129,8 +129,8 @@ The complete, refined prompt is now on your clipboard, ready to be pasted into a
 
 
 ### Selecting a Model
-Use the -m or --model flag to specify which Gemini model to use. If you don't provide one, it will default to gemini-2.5-pro which is recommended for generating prompts for more complicated/bigger problems. 
+Use the -m or --model flag to specify which Gemini model to use. If you don't provide one, it will default to gemini-2.5-pro which is recommended for generating prompts for more complicated/bigger problems as it applies some reasoning as to how best to construct a prompt. 
 
-Flash models are reasonable for simpler problems, but in this regime you might not really need a well engineered prompt so strongly, and would be better to interact directly with your chosen LLM.
+Flash models are reasonable for simpler problems or if you want to keep your context largely unchanged. In the regime of smaller problems, you might not really need a well engineered prompt so strongly, and would be better off interacting directly with your chosen LLM.
 
 Available aliases: pro2.5, flash2.5, flash-lite2.5, pro2.0, flash2.0, flash-lite2.0
