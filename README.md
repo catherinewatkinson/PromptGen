@@ -55,6 +55,7 @@ The prompt-gen command is now globally available in your terminal.
 prompt-gen is designed to be flexible. You can provide your context in three different ways.
 
 **Method 1: Command-Line Argument (for short text)**
+
 Use the -c or --context flag for simple, single-line context.
 
 ```bash
@@ -62,13 +63,15 @@ prompt-gen -c "my python function to calculate fibonacci is slow"
 ```
 
 **Method 2: From a File (Recommended for code)**
+
 For multi-line text or code snippets, save your context to a file (e.g., my_code.py) and use the -f or --file flag.
 
 ```bash
 prompt-gen -f my_code.py
 ```
 
-**Method 3: Using a Pipe / Standard Input**
+**Method 2a: Using a Pipe / Standard Input**
+
 You can also pipe content directly into the command. This is a powerful way to integrate prompt-gen into other command-line workflows.
 
 Piping from a file:
@@ -77,8 +80,9 @@ Piping from a file:
 cat my_code.py | prompt-gen
 ```
 
-Pasting directly into the terminal (using a "here document" instigated by << followed by some delimiter): 
+**Method 3: Pasting long text directly into the terminal using a "here document"** 
 
+This mode is instigated by typing << followed by some delimiter, e.g. EOF and then enter, pasting your text, typing the delimiter (here EOF) again and hitting enter once more.
 ```bash
 prompt-gen <<EOF
 > Paste your multi-line
