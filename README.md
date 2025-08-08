@@ -1,109 +1,78 @@
-Of course. Here is a complete README.md file that you can copy and paste for your project.
-
------
-
-# PromptGen
-
-`prompt-gen` is a command-line interface (CLI) tool that uses the Google Gemini API to transform raw ideas & context into perfectly structured, high-quality prompts.
+Prompt Gen 🤖
+prompt-gen is a command-line interface (CLI) tool that uses the power of the Google Gemini API to transform your raw ideas into perfectly structured, high-quality prompts.
 
 It acts as an intelligent co-pilot for your prompt engineering workflow, saving you time by automatically generating and formatting prompts for complex tasks.
 
-## Features
+Features
+AI-Powered Refinement: Leverages a "meta-prompt" to ask Gemini to act as an expert prompt engineer, turning your simple context into a detailed prompt.
 
-  * **AI-Powered Refinement**: Leverages a "meta-prompt" to ask Gemini to act as an expert prompt engineer, turning your simple context into a detailed prompt.
-  * **Clipboard Integration**: Automatically copies the final, AI-generated prompt to your system's clipboard for immediate use.
-  * **Secure API Key Handling**: Uses a `.env` file to securely manage your Google Gemini API key, keeping it out of your code.
-  * **Easy Installation**: Can be installed as a global command using standard Python packaging tools.
+Flexible Input: Provide context via command-line arguments, files, or by piping directly from standard input.
 
------
+Model Selection: Easily choose your desired Gemini model using simple aliases (e.g., pro2.5, flash1.5).
 
-## Installation
+Clipboard Integration: Automatically copies the final, AI-generated prompt to your system's clipboard for immediate use.
 
-Follow these steps to get `prompt-crafter` up and running.
+Secure API Key Handling: Uses a .env file to securely manage your Google Gemini API key.
 
-### Prerequisites
+Installation
+Follow these steps to get prompt-gen up and running.
 
-  * Python 3.8+
-  * Git
+Prerequisites
+Python 3.8+
 
-### 1\. Clone the Repository
+An active Conda environment
 
+1. Clone the Repository
 First, clone the project from its source repository to your local machine.
 
-```bash
 git clone <your-repository-url>
-cd prompt-crafter_project
-```
+cd PromptGen
 
-### 2\. Set Up Your Gemini API Key
-
+2. Set Up Your Gemini API Key
 This tool requires a Google Gemini API key to function.
 
-1.  Get your free API key from **[Google AI Studio](https://aistudio.google.com/app/apikey)**.
+Get your free API key from Google AI Studio.
 
-2.  In the project directory, create a `.env` file to store your key securely. Replace `your_api_key_here` with the key you just obtained.
+In the project directory, create a .env file to store your key securely. Replace your_api_key_here with the key you just obtained.
 
-    ```bash
-    # Create the file
-    touch .env
+echo 'GEMINI_API_KEY="your_api_key_here"' > .env
 
-    # Add your key to the file
-    echo 'GEMINI_API_KEY="your_api_key_here"' > .env
-    ```
+3. Install the Package
+Install the tool and its dependencies into your active Conda environment using pip. The -e flag installs it in "editable" mode, so any changes you make to the script will be immediately effective.
 
-### 3\. Install the Package
-
-Install the tool and its dependencies using `pip`. The `-e` flag installs it in "editable" mode, so any changes you make to `prompt-gen.py` will be immediately effective.
-
-```bash
 pip install -e .
-```
 
-The `prompt-gen` command is now globally available in your terminal.
+The prompt-gen command is now globally available in your terminal.
 
------
+Usage
+prompt-gen is designed to be flexible. You can provide your context in three different ways.
 
-## Usage
+Method 1: Command-Line Argument (for short text)
+Use the -c or --context flag for simple, single-line context.
 
-To use the tool, simply call the `prompt-gen` command with the `-c` or `--context` option, followed by your raw idea in quotes.
+prompt-gen -c "my python function to calculate fibonacci is slow"
 
-### Example
+Method 2: From a File (Recommended for code)
+For multi-line text or code snippets, save your context to a file (e.g., my_code.py) and use the -f or --file flag.
 
-Let's say you need to debug a slow database query. Instead of writing a detailed prompt manually, you can just provide the basic idea:
+prompt-gen -f my_code.py
 
-```bash
-prompt-gen -c "my sql query to fetch user orders is too slow. it uses a few joins. need to figure out why and how to fix it."
-```
+Method 3: Using a Pipe / Standard Input
+You can also pipe content directly into the command. This is a powerful way to integrate prompt-gen into other command-line workflows.
 
-The tool will display the following messages as it works:
+Piping from a file:
 
-```
-🧠 Contacting Gemini to refine your prompt...
-✅ AI-refined prompt copied to clipboard!
+cat my_code.py | prompt-gen
 
---- Generated Prompt ---
+Pasting directly into the terminal (using a "here document" instigated by << followed by some delimiter): 
 
-**Role:** SQL Performance Analyst
+prompt-gen <<EOF
+> Paste your multi-line
+> code or text directly
+> into the terminal.
+> EOF
 
----
-**Context:**
-my sql query to fetch user orders is too slow. it uses a few joins. need to figure out why and how to fix it.
-Here is the relevant code:
-```
+Selecting a Model
+Use the -m or --model flag to specify which Gemini model to use. If you don't provide one, it will default to gemini-2.5-pro
 
-[PASTE CODE HERE]
-
-```
-
----
-**Task:**
-You are a Gemini agent. Please perform the following task: Analyze the provided SQL query that is experiencing performance issues. Identify potential bottlenecks such as inefficient joins, missing indexes, or suboptimal query structure. Provide a detailed explanation of the problems found and suggest an optimized version of the query.
-```
-
-The complete, refined prompt is now on your clipboard, ready to be pasted into any LLM interface.
-
------
-
-## License
-
-This project is licensed under the MIT License.
+Available aliases: pro2.5, flash2.5, flash-lite2.5, pro2.0, flash2.0, flash-lite2.0
