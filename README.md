@@ -115,7 +115,7 @@ my sql query to fetch user orders is too slow. it uses a few joins. need to figu
 Here is the relevant code:
 ````python
 [PASTE CODE HERE]
-````
+```
 
 ---
 **Task:**
