@@ -51,7 +51,7 @@ pip install -e .
 
 The prompt-gen command is now globally available in your terminal.
 
-### Usage
+### Usage
 prompt-gen is designed to be flexible. You can provide your context in three different ways.
 
 Method 1: Command-Line Argument (for short text)
@@ -87,7 +87,7 @@ prompt-gen <<EOF
 > EOF
 ```
 
-### Selecting a Model
+### Selecting a Model
 Use the -m or --model flag to specify which Gemini model to use. If you don't provide one, it will default to gemini-2.5-pro
 
 Available aliases: pro2.5, flash2.5, flash-lite2.5, pro2.0, flash2.0, flash-lite2.0
