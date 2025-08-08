@@ -91,7 +91,47 @@ prompt-gen <<EOF
 > EOF
 ```
 
+#### Example
+
+Let's say you need to debug a slow database query. Instead of writing a detailed prompt manually, you can just provide the basic idea:
+
+```bash
+prompt-gen -c "my sql query to fetch user orders is too slow. it uses a few joins. need to figure out why and how to fix it."
+```
+
+The tool will display the following messages as it works:
+
+```
+🧠 Contacting Gemini to refine your prompt...
+✅ AI-refined prompt copied to clipboard!
+
+--- Generated Prompt ---
+
+**Role:** SQL Performance Analyst
+
+---
+**Context:**
+my sql query to fetch user orders is too slow. it uses a few joins. need to figure out why and how to fix it.
+Here is the relevant code:
+```
+
+[PASTE CODE HERE]
+
+```
+
+---
+**Task:**
+Please perform the following task: Analyze the provided SQL query that is experiencing performance issues. Identify potential bottlenecks such as inefficient joins, missing indexes, or suboptimal query structure. Provide a detailed explanation of the problems found and suggest an optimized version of the query.
+```
+
+The complete, refined prompt is now on your clipboard, ready to be pasted into any LLM interface.
+
+-----
+
+
 ### Selecting a Model
-Use the -m or --model flag to specify which Gemini model to use. If you don't provide one, it will default to gemini-2.5-pro
+Use the -m or --model flag to specify which Gemini model to use. If you don't provide one, it will default to gemini-2.5-pro which is recommended for generating prompts for more complicated/bigger problems. 
+
+Flash models are reasonable for simpler problems, but in this regime you might not really need a well engineered prompt so strongly, and would be better to interact directly with your chosen LLM.
 
 Available aliases: pro2.5, flash2.5, flash-lite2.5, pro2.0, flash2.0, flash-lite2.0
