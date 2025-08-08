@@ -113,11 +113,10 @@ The tool will display the following messages as it works:
 **Context:**
 my sql query to fetch user orders is too slow. it uses a few joins. need to figure out why and how to fix it.
 Here is the relevant code:
-````
-```python
-[PASTE CODE HERE]
-```
-````
+
+    ```python
+    [PASTE CODE HERE]
+    ```
 
 ---
 **Task:**
