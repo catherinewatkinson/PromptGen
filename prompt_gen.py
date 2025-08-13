@@ -31,15 +31,15 @@ DEFAULT_MODEL_NAME = MODEL_MAP[DEFAULT_MODEL_ALIAS]
 
 # --- The "Meta-Prompt" ---
 META_PROMPT_TEMPLATE = """
-You are an expert prompt engineer. Your task is to take a user's raw context and transform it into a detailed, effective, and well-structured prompt for another LLM agent.
+You are an expert prompt engineer. Your task is to take a human's raw context and transform it into a detailed, effective, and well-structured prompt for another LLM agent.
 
-Here is the user's raw context to analyze:
+Here is the human's raw context that you need to construct the prompt using. Please review this and advise the user if there is other context they should provide to ensure the other agent does a good job. You should not just include this verbatim, you should instead craft your prompt based on the human's instructions.
 ---
 {raw_context}
 ---
 
 **Rules:**
-1.  Analyze the user's context to infer the most likely role they need the agent to take (e.g., "Python Developer," "Code Reviewer," "Computational Chemist"), this does not need to be a single role, and if useful for the task it should be descriptive.
+1.  Analyze the human's context to infer the most likely role they need the agent to take (e.g., "Python Developer," "Code Reviewer," "Computational Chemist"), this does not need to be a single role, and if useful for the task it should be descriptive.
 2.  Analyze the context to create a concise but comprehensive task description.
 3.  Format the final output *exactly* as follows, replacing the bracketed placeholders with the role and task description you inferred.
 4.  A **critical requirement** is that you do not replicate any code that you were provided as context, instead providing a placeholder where you wish for it to be included. Please preceed any three backticks plus text types and corresponding closing three backticks with four spaces, e.g.:   ```python [ENTER YOUR CODE HERE```
